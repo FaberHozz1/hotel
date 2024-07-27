@@ -7,7 +7,29 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
+          "path": "src",
           "style": "sass"
+        },
+        "@schematics/angular:directive": {
+          "path": "src"
+        },
+        "@schematics/angular:module": {
+          "path": "src"
+        },
+        "@schematics/angular:service": {
+          "path": "src"
+        },
+        "@schematics/angular:pipe": {
+          "path": "src"
+        },
+        "@schematics/angular:class": {
+          "path": "src"
+        },
+        "@schematics/angular:interceptor": {
+          "path": "src"
+        },
+        "@schematics/angular:guard": {
+          "path": "src"
         }
       },
       "root": "",
@@ -28,10 +50,12 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/ui/assets",
+                "output": "/assets/"
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.sass"
             ],
             "scripts": []
@@ -91,6 +115,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.sass"
             ],
             "scripts": []

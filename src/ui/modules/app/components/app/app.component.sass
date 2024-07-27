@@ -1,0 +1,17 @@
+.main
+  box-sizing: border-box
+  display: grid
+  grid-gap: 0px 10px
+  grid-template-columns: repeat(12, 1fr)
+  grid-template-rows: 100px 1fr
+  height: 100vh
+  max-width: 2000px
+  padding: 0 40px
+  width: 100vw
+
+  header, .content
+    display: grid
+    grid-column: 1/13
+
+  .content
+    padding-top: 20px
