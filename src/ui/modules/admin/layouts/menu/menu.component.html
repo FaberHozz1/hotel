@@ -1,0 +1,17 @@
+<section>
+  <header>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      @for (item of menuItems; track item.name) {
+      <button mat-menu-item (click)="onItemClick(item.url)">
+        <mat-icon>{{ item.icon }}</mat-icon>
+        {{ item.name }}
+      </button>
+      }
+    </mat-menu>
+  </header>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</section>

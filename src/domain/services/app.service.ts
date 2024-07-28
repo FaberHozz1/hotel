@@ -1,18 +1,15 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { UserRol } from '../interfaces/app.interface';
 import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
-  private _userRol$: Subject<UserRol | null> = new Subject<UserRol | null>();
+  private _router = inject(Router);
 
-  public set setUserRol(userRol: UserRol) {
-    this._userRol$.next(userRol);
-  }
-
-  public get getUserRol(): Observable<UserRol | null> {
-    return this._userRol$;
+  public goTo(url: string): void {
+    this._router.navigateByUrl(url);
   }
 }

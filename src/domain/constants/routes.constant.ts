@@ -7,9 +7,9 @@ export const APP_ROUTES = {
         PATH: 'hotels',
         URL: 'admin/hotels',
       },
-      RESERVATIONS: {
-        PATH: 'reservations',
-        URL: 'admin/reservations',
+      BOOKINGS: {
+        PATH: 'bookings',
+        URL: 'admin/bookings',
       },
     },
   },
@@ -17,9 +17,9 @@ export const APP_ROUTES = {
     PATH: 'customer',
     URL: 'customer',
     CHILDREN: {
-      RESERVATIONS: {
-        PATH: 'reservations',
-        URL: 'customer/reservations',
+      RESERVE: {
+        PATH: 'reserve',
+        URL: 'customer/reserve',
       },
     },
   },

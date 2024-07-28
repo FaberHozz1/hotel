@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { EUSER_ROLS } from 'src/domain/enums/app.enums';
 import { UserRol } from 'src/domain/interfaces/app.interface';
 import { AppService } from 'src/domain/services/app.service';
+import { UserService } from 'src/domain/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +16,11 @@ import { AppService } from 'src/domain/services/app.service';
 })
 export class HomeComponent {
   public USER_ROLS = EUSER_ROLS;
-  private _appService: AppService = inject(AppService);
+  private _userService: UserService = inject(UserService);
   private _router = inject(Router);
 
   public onSetUserRol(userRol: UserRol): void {
-    this._appService.setUserRol = userRol;
+    this._userService.setUserRol = userRol;
     this._router.navigate([userRol]);
   }
 }
