@@ -13,4 +13,14 @@ export const APP_ROUTES = {
       },
     },
   },
+  CUSTOMER: {
+    PATH: 'customer',
+    URL: 'customer',
+    CHILDREN: {
+      RESERVATIONS: {
+        PATH: 'reservations',
+        URL: 'customer/reservations',
+      },
+    },
+  },
 };

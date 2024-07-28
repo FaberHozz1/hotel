@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
-import { HotelsComponent } from './components/hotels/hotels.component';
 import { APP_ROUTES } from 'src/domain/constants/routes.constant';
+import { HotelsComponent } from './components/hotels/hotels.component';
 
 const ROUTES = APP_ROUTES.ADMIN.CHILDREN;
 

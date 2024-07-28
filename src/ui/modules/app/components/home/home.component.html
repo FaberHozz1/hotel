@@ -1,0 +1,24 @@
+<mat-card appearance="outlined" class="userRol">
+  <mat-card-header>
+    <h1>HOTEL</h1>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      Bienvenido a Hotel, puedes crear hoteles y habitaciones, o administrar las
+      reservas desde el rol administrativo. O puedes reservar tu hotel desde el
+      rol de usuario.
+    </p>
+
+    <p>Selecciona una de las siguientes opciones para emular una sesión:</p>
+  </mat-card-content>
+
+  <mat-card-footer class="footer">
+    <button mat-stroked-button (click)="onSetUserRol(USER_ROLS.CUSTOMER)">
+      Usuario
+    </button>
+    <button mat-stroked-button (click)="onSetUserRol(USER_ROLS.ADMIN)">
+      Administrador
+    </button>
+  </mat-card-footer>
+</mat-card>
