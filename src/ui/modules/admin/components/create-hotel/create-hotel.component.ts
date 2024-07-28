@@ -19,6 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { take } from 'rxjs';
 import { AdminFacade } from 'src/data/facades/admin.facade.';
+import { ELOADER_STATUS } from 'src/domain/enums/app.enums';
+import { LoaderStatus } from 'src/domain/interfaces/app.interface';
 
 @Component({
   selector: 'app-create-hotel',
@@ -43,8 +45,8 @@ export class CreateHotelComponent implements OnInit {
   private _formBuilder = inject(FormBuilder);
   private _adminFacade = inject(AdminFacade);
   public form!: FormGroup;
-  public isLoadingCreateHotel = signal(false);
-
+  public isLoadingCreateHotel = signal<LoaderStatus>(ELOADER_STATUS.INITIAL);
+  public LOADER_STATUS = ELOADER_STATUS;
   public ngOnInit(): void {
     this._initForm();
   }
@@ -63,10 +65,13 @@ export class CreateHotelComponent implements OnInit {
 
   public onCreateClick(): void {
     if (this.form.invalid) return;
-    this.isLoadingCreateHotel.set(true);
+    this.isLoadingCreateHotel.set(ELOADER_STATUS.LOADING);
     this._adminFacade
       .createHotel(this.form.value)
       .pipe(take(1))
-      .subscribe(() => this.isLoadingCreateHotel.set(false));
+      .subscribe({
+        next: () => this.isLoadingCreateHotel.set(ELOADER_STATUS.SUCCESS),
+        error: () => this.isLoadingCreateHotel.set(ELOADER_STATUS.ERROR),
+      });
   }
 }

@@ -1,4 +1,4 @@
-@if (!isLoadingCreateHotel()) {
+@if (isLoadingCreateHotel() === LOADER_STATUS.INITIAL) {
 <h2 mat-dialog-title>Crear Hotel</h2>
 <mat-dialog-content [formGroup]="form">
   <p>Ingrese la información del hotel</p>
@@ -26,6 +26,22 @@
     Crear
   </button>
 </mat-dialog-actions>
-} @else {
+} @else if (isLoadingCreateHotel() === LOADER_STATUS.LOADING) {
 <mat-spinner></mat-spinner>
+} @else if (isLoadingCreateHotel() === LOADER_STATUS.SUCCESS) {
+<h2 mat-dialog-title>Hotel creado</h2>
+<mat-dialog-actions>
+  <button mat-button cdkFocusInitial (click)="onCancelClick()">Ok</button>
+</mat-dialog-actions>
+} @else if (isLoadingCreateHotel() === LOADER_STATUS.ERROR) {
+<h2 mat-dialog-title>Error</h2>
+<mat-dialog-content>
+  <p>Ocurrio un error al crear el hotel</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="onCreateClick()">
+    Intentar de nuevo
+  </button>
+</mat-dialog-actions>
 }
