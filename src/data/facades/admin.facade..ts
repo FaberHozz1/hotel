@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { HotelApi } from 'src/domain/apis/hotel.api';
 import { IHotel, IHotelsResponse } from 'src/domain/interfaces/hotel.interface';
 import { AppService } from 'src/domain/services/app.service';
@@ -17,5 +17,9 @@ export class AdminFacade {
     return this._hotelApi
       .requestHotels()
       .pipe(map(({ hotels }: IHotelsResponse) => hotels));
+  }
+
+  public createHotel(hotel: Omit<IHotel, 'id'>): Observable<null> {
+    return this._hotelApi.createHotel(hotel);
   }
 }

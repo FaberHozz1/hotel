@@ -1,11 +1,6 @@
-import { AppService } from 'src/domain/services/app.service';
-
-import { Component, inject, Signal } from '@angular/core';
-import { EUSER_ROLS } from 'src/domain/enums/app.enums';
+import { Component } from '@angular/core';
 import { HeaderComponent } from 'src/ui/shared/components/header/header.component';
-import { Router, RouterOutlet } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { UserRol } from 'src/domain/interfaces/app.interface';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',

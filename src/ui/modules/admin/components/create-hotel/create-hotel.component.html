@@ -1,0 +1,31 @@
+@if (!isLoadingCreateHotel()) {
+<h2 mat-dialog-title>Crear Hotel</h2>
+<mat-dialog-content [formGroup]="form">
+  <p>Ingrese la información del hotel</p>
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Dirección</mat-label>
+    <input matInput formControlName="address" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Teléfono</mat-label>
+    <input matInput formControlName="phone" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancelar</button>
+  <button
+    mat-button
+    cdkFocusInitial
+    [disabled]="form.invalid"
+    (click)="onCreateClick()"
+  >
+    Crear
+  </button>
+</mat-dialog-actions>
+} @else {
+<mat-spinner></mat-spinner>
+}

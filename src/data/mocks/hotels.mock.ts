@@ -20,3 +20,9 @@ export const MOCK_GET_HOTELS_SUCCESS: IMock<IHotelsResponse> = {
   },
   method: 'GET',
 };
+
+export const MOCK_POST_HOTEL_SUCCESS: IMock<null> = {
+  url: URLS_API.HOTEL,
+  response: null,
+  method: 'POST',
+};

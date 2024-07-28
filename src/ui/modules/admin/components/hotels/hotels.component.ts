@@ -3,6 +3,8 @@ import { CardComponent } from 'src/ui/shared/components/card/card.component';
 import { ListComponent } from 'src/ui/shared/layouts/list/list.component';
 import { MatTableModule } from '@angular/material/table';
 import { AdminFacade } from 'src/data/facades/admin.facade.';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateHotelComponent } from '../create-hotel/create-hotel.component';
 
 @Component({
   selector: 'app-hotels',
@@ -13,6 +15,11 @@ import { AdminFacade } from 'src/data/facades/admin.facade.';
 })
 export class HotelsComponent {
   private _adminFacade = inject(AdminFacade);
-  displayedColumns: string[] = ['id', 'name', 'address', 'phone'];
-  dataSource = this._adminFacade.requestHotels();
+  readonly displayedColumns: string[] = ['id', 'name', 'address', 'phone'];
+  readonly dataSource = this._adminFacade.requestHotels();
+  readonly dialog = inject(MatDialog);
+
+  public openDialog(): void {
+    this.dialog.open(CreateHotelComponent);
+  }
 }

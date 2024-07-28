@@ -10,10 +10,11 @@ import { URLS_API } from '../constants/url-api.constant';
 export class HotelApi {
   private _http = inject(HttpClient);
 
-  // CRUD
-  // Create Request Update Delete
-
   public requestHotels(): Observable<IHotelsResponse> {
     return this._http.get<IHotelsResponse>(URLS_API.HOTELS);
+  }
+
+  public createHotel(hotel: Omit<IHotel, 'id'>): Observable<null> {
+    return this._http.post<null>(URLS_API.HOTEL, hotel);
   }
 }
