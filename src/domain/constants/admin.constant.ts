@@ -8,7 +8,7 @@ export const ADMIN_MENU = [
   },
   {
     name: 'Reservas',
-    icon: 'concierge',
+    icon: 'room_service',
     url: APP_ROUTES.ADMIN.CHILDREN.BOOKINGS.URL,
   },
 ];
