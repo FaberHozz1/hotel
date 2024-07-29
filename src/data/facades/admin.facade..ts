@@ -6,6 +6,7 @@ import {
   IHotel,
   IHotelDetails,
   IHotelsResponse,
+  IRoom,
 } from 'src/domain/interfaces/hotel.interface';
 import { AppService } from 'src/domain/services/app.service';
 
@@ -30,6 +31,14 @@ export class AdminFacade {
 
   public updateHotel(hotel: IHotel): Observable<null> {
     return this._hotelApi.updateHotel(hotel);
+  }
+
+  public createHotelRoom(room: Omit<IRoom, 'id'>): Observable<null> {
+    return this._hotelApi.createHotelRoom(room);
+  }
+
+  public updateHotelRoom(room: IRoom): Observable<null> {
+    return this._hotelApi.updateHotelRoom(room);
   }
 
   public requestHotelDetails(id: string): Observable<IHotelDetails> {

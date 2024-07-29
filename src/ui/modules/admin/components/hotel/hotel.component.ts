@@ -1,9 +1,20 @@
-import { Component, inject, OnInit, Signal, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  OnInit,
+  Signal,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AdminFacade } from 'src/data/facades/admin.facade.';
-import { IHotelDetails, IRoom } from 'src/domain/interfaces/hotel.interface';
+import {
+  IHotel,
+  IHotelDetails,
+  IRoom,
+} from 'src/domain/interfaces/hotel.interface';
 import { CreateRoomComponent } from '../create-room/create-room.component';
 import { CardComponent } from 'src/ui/shared/components/card/card.component';
 import { ListComponent } from 'src/ui/shared/layouts/list/list.component';
@@ -12,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CurrencyPipe } from '@angular/common';
 import { EditRoomComponent } from '../edit-room/edit-room.component';
+import { EditHotelComponent } from '../edit-hotel/edit-hotel.component';
 
 @Component({
   selector: 'app-hotel',
@@ -42,17 +54,29 @@ export class HotelComponent {
     'total_price',
     'button',
   ];
+  public hotel!: IHotel;
 
   constructor() {
     const id = String(this._route.snapshot.paramMap.get('id'));
     this.hotelDetails = toSignal(this._adminFacade.requestHotelDetails(id));
   }
 
-  public onCreateClick(): void {
+  public onEditHotelClick(): void {
+    const hotelDetails: IHotelDetails | undefined = this.hotelDetails();
+    if (hotelDetails) {
+      const { id, name, address, phone } = hotelDetails;
+      const hotel: IHotel = { id, name, address, phone };
+      this.dialog.open(EditHotelComponent, {
+        data: hotel,
+      });
+    }
+  }
+
+  public onCreateRoomClick(): void {
     this.dialog.open(CreateRoomComponent);
   }
 
-  public onEditClick(room: IRoom): void {
+  public onEditRoomClick(room: IRoom): void {
     this.dialog.open(EditRoomComponent, {
       data: room,
     });

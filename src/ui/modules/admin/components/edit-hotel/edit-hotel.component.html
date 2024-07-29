@@ -1,7 +1,7 @@
 @if (isLoadingCreateHotel() === LOADER_STATUS.INITIAL) {
-<h2 mat-dialog-title>Crear Hotel</h2>
+<h2 mat-dialog-title>Actualizar Hotel</h2>
 <mat-dialog-content [formGroup]="form">
-  <p>Ingrese la información del hotel</p>
+  <p>Edite la información del hotel</p>
   <mat-form-field>
     <mat-label>Nombre</mat-label>
     <input matInput formControlName="name" />
@@ -12,7 +12,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Teléfono</mat-label>
-    <input type="number" matInput formControlName="phone" />
+    <input matInput formControlName="phone" />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
@@ -23,20 +23,20 @@
     [disabled]="form.invalid"
     (click)="onCreateClick()"
   >
-    Crear
+    Actualizar
   </button>
 </mat-dialog-actions>
 } @else if (isLoadingCreateHotel() === LOADER_STATUS.LOADING) {
 <mat-spinner></mat-spinner>
 } @else if (isLoadingCreateHotel() === LOADER_STATUS.SUCCESS) {
-<h2 mat-dialog-title>Hotel creado</h2>
+<h2 mat-dialog-title>Hotel actualizado</h2>
 <mat-dialog-actions>
   <button mat-button cdkFocusInitial (click)="onCancelClick()">Ok</button>
 </mat-dialog-actions>
 } @else if (isLoadingCreateHotel() === LOADER_STATUS.ERROR) {
 <h2 mat-dialog-title>Error</h2>
 <mat-dialog-content>
-  <p>Ocurrio un error al crear el hotel</p>
+  <p>Ocurrio un error al actualizar el hotel</p>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onCancelClick()">Cancelar</button>

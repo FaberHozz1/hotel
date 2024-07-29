@@ -93,7 +93,7 @@ export class EditRoomComponent implements OnInit {
     if (this.form.invalid) return;
     this.isLoadingCreateRoom.set(ELOADER_STATUS.LOADING);
     this._adminFacade
-      .updateHotel(this.form.value)
+      .updateHotelRoom(this.form.value)
       .pipe(take(1))
       .subscribe({
         next: () => this.isLoadingCreateRoom.set(ELOADER_STATUS.SUCCESS),

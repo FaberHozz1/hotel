@@ -5,6 +5,7 @@ import {
   IHotel,
   IHotelDetails,
   IHotelsResponse,
+  IRoom,
 } from '../interfaces/hotel.interface';
 import { URLS_API } from '../constants/url-api.constant';
 
@@ -24,6 +25,14 @@ export class HotelApi {
 
   public updateHotel(hotel: IHotel): Observable<null> {
     return this._http.put<null>(URLS_API.HOTEL, hotel);
+  }
+
+  public createHotelRoom(room: Omit<IRoom, 'id'>): Observable<null> {
+    return this._http.post<null>(URLS_API.ROOM, room);
+  }
+
+  public updateHotelRoom(room: IRoom): Observable<null> {
+    return this._http.put<null>(URLS_API.ROOM, room);
   }
 
   public requestHotelDetailsById(id: string): Observable<IHotelDetails> {
