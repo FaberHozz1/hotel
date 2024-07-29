@@ -12,3 +12,9 @@ export const MOCK_PUT_HOTEL_ROOM_SUCCESS: IMock<null> = {
   response: null,
   method: 'PUT',
 };
+
+export const MOCK_PUT_HOTEL_ROOM_ACTIVE_SUCCESS: IMock<null> = {
+  url: URLS_API.ROOM_ACTIVE,
+  response: null,
+  method: 'PUT',
+};

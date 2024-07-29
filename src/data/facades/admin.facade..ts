@@ -49,4 +49,8 @@ export class AdminFacade {
     const url = APP_ROUTES.ADMIN.CHILDREN.HOTEL.URL + id;
     this._appService.goTo(url);
   }
+
+  public setRoomActive(id: string): Observable<null> {
+    return this._hotelApi.updateHotelRoomActive(id);
+  }
 }

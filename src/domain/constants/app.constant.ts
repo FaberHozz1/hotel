@@ -1,0 +1,3 @@
+export const APP_CONSTANTS = {
+  SNACKBAR_DURATION: 1500,
+};

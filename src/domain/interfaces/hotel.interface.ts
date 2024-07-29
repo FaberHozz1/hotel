@@ -22,4 +22,5 @@ export interface IRoom {
   size: EHOTEL_ROOM_SIZE;
   tax: number;
   type: EHOTEL_ROOM_TYPE;
+  active: boolean;
 }

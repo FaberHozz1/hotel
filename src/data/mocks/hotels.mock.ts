@@ -81,6 +81,7 @@ export const MOCK_GET_HOTEL_SUCCESS: IMock<IHotelDetails> = {
         size: EHOTEL_ROOM_SIZE.QUADRUPLE,
         tax: 15.0,
         type: EHOTEL_ROOM_TYPE.GRAN_SUITE,
+        active: true,
       },
       {
         id: 2,
@@ -89,6 +90,7 @@ export const MOCK_GET_HOTEL_SUCCESS: IMock<IHotelDetails> = {
         size: EHOTEL_ROOM_SIZE.DOUBLE,
         tax: 12.0,
         type: EHOTEL_ROOM_TYPE.SUITE,
+        active: false,
       },
       {
         id: 3,
@@ -97,6 +99,7 @@ export const MOCK_GET_HOTEL_SUCCESS: IMock<IHotelDetails> = {
         size: EHOTEL_ROOM_SIZE.INDIVIDUAL,
         tax: 10.0,
         type: EHOTEL_ROOM_TYPE.JUNIOR_SUITE,
+        active: true,
       },
     ],
   },
