@@ -2,9 +2,8 @@ import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
-import { EUSER_ROLS } from 'src/domain/enums/app.enums';
+import { EUSER_ROLS } from 'src/domain/enums/app.enum';
 import { UserRol } from 'src/domain/interfaces/app.interface';
-import { AppService } from 'src/domain/services/app.service';
 import { UserService } from 'src/domain/services/user.service';
 
 @Component({

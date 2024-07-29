@@ -3,6 +3,7 @@ import { APP_ROUTES } from 'src/domain/constants/routes.constant';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { MenuComponent } from './layouts/menu/menu.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
+import { HotelComponent } from './components/hotel/hotel.component';
 
 const ROUTES = APP_ROUTES.ADMIN.CHILDREN;
 
@@ -15,6 +16,10 @@ export const ADMIN_ROUTES: Route[] = [
       {
         path: ROUTES.HOTELS.PATH,
         component: HotelsComponent,
+      },
+      {
+        path: ROUTES.HOTEL.PATH,
+        component: HotelComponent,
       },
       {
         path: ROUTES.BOOKINGS.PATH,

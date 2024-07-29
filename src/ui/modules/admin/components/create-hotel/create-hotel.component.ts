@@ -19,7 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { take } from 'rxjs';
 import { AdminFacade } from 'src/data/facades/admin.facade.';
-import { ELOADER_STATUS } from 'src/domain/enums/app.enums';
+import { ELOADER_STATUS } from 'src/domain/enums/app.enum';
 import { LoaderStatus } from 'src/domain/interfaces/app.interface';
 
 @Component({
@@ -34,8 +34,8 @@ import { LoaderStatus } from 'src/domain/interfaces/app.interface';
     MatDialogTitle,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule,
     MatProgressSpinnerModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './create-hotel.component.html',
   styleUrl: './create-hotel.component.sass',

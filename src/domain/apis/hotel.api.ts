@@ -1,7 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IHotel, IHotelsResponse } from '../interfaces/hotel.interface';
+import {
+  IHotel,
+  IHotelDetails,
+  IHotelsResponse,
+} from '../interfaces/hotel.interface';
 import { URLS_API } from '../constants/url-api.constant';
 
 @Injectable({
@@ -16,5 +20,13 @@ export class HotelApi {
 
   public createHotel(hotel: Omit<IHotel, 'id'>): Observable<null> {
     return this._http.post<null>(URLS_API.HOTEL, hotel);
+  }
+
+  public requestHotelDetailsById(id: string): Observable<IHotelDetails> {
+    let params = new HttpParams();
+    params = params.appendAll({ id });
+    return this._http.get<IHotelDetails>(URLS_API.HOTEL, {
+      params,
+    });
   }
 }

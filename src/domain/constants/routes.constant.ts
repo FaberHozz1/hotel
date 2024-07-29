@@ -7,6 +7,10 @@ export const APP_ROUTES = {
         PATH: 'hotels',
         URL: 'admin/hotels',
       },
+      HOTEL: {
+        PATH: 'hotel/:id',
+        URL: 'admin/hotel/',
+      },
       BOOKINGS: {
         PATH: 'bookings',
         URL: 'admin/bookings',

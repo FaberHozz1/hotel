@@ -1,7 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { HotelApi } from 'src/domain/apis/hotel.api';
-import { IHotel, IHotelsResponse } from 'src/domain/interfaces/hotel.interface';
+import { APP_ROUTES } from 'src/domain/constants/routes.constant';
+import {
+  IHotel,
+  IHotelDetails,
+  IHotelsResponse,
+} from 'src/domain/interfaces/hotel.interface';
 import { AppService } from 'src/domain/services/app.service';
 
 @Injectable({ providedIn: 'root' })
@@ -21,5 +26,14 @@ export class AdminFacade {
 
   public createHotel(hotel: Omit<IHotel, 'id'>): Observable<null> {
     return this._hotelApi.createHotel(hotel);
+  }
+
+  public requestHotelDetails(id: string): Observable<IHotelDetails> {
+    return this._hotelApi.requestHotelDetailsById(id);
+  }
+
+  public openHotel(id: string): void {
+    const url = APP_ROUTES.ADMIN.CHILDREN.HOTEL.URL + id;
+    this._appService.goTo(url);
   }
 }
