@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { HotelApi } from 'src/domain/apis/hotel.api';
 import { APP_ROUTES } from 'src/domain/constants/routes.constant';
 import {
@@ -50,7 +50,15 @@ export class AdminFacade {
     this._appService.goTo(url);
   }
 
-  public setRoomActive(id: string): Observable<null> {
-    return this._hotelApi.updateHotelRoomActive(id);
+  public updateRoomActive(id: string): void {
+    this._hotelApi
+      .updateHotelRoomActive(id)
+      .subscribe(() => this._appService.showActiveConfirm());
+  }
+
+  public updateHotelActive(id: string): void {
+    this._hotelApi
+      .updateHotelActive(id)
+      .subscribe(() => this._appService.showActiveConfirm());
   }
 }

@@ -18,8 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { APP_CONSTANTS } from 'src/domain/constants/app.constant';
 
 @Component({
   selector: 'app-hotel',
@@ -39,7 +37,6 @@ import { APP_CONSTANTS } from 'src/domain/constants/app.constant';
 export class HotelComponent {
   private _route = inject(ActivatedRoute);
   private _adminFacade = inject(AdminFacade);
-  private _snackbar = inject(MatSnackBar);
   public hotelDetails!: Signal<IHotelDetails | undefined>;
   readonly dialog = inject(MatDialog);
   readonly displayedColumns: string[] = [
@@ -64,7 +61,7 @@ export class HotelComponent {
     const hotelDetails: IHotelDetails | undefined = this.hotelDetails();
     if (hotelDetails) {
       const { id, name, address, phone } = hotelDetails;
-      const hotel: IHotel = { id, name, address, phone };
+      const hotel: Omit<IHotel, 'active'> = { id, name, address, phone };
       this.dialog.open(EditHotelComponent, {
         data: hotel,
       });
@@ -82,10 +79,6 @@ export class HotelComponent {
   }
 
   public onToogleActive(id: string): void {
-    this._adminFacade.setRoomActive(id).subscribe(() =>
-      this._snackbar.open('Update complete!', 'ok', {
-        duration: APP_CONSTANTS.SNACKBAR_DURATION,
-      })
-    );
+    this._adminFacade.updateRoomActive(id);
   }
 }

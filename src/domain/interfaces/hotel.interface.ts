@@ -5,6 +5,7 @@ export interface IHotel {
   name: string;
   address: string;
   phone: string;
+  active: boolean;
 }
 
 export interface IHotelsResponse {

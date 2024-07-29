@@ -18,36 +18,42 @@ export const MOCK_GET_HOTELS_SUCCESS: IMock<IHotelsResponse> = {
         name: 'Hotel Fake',
         address: 'calle fake 123',
         phone: '3211231313',
+        active: true,
       },
       {
         id: 2,
         name: 'Hotel Falso',
         address: '123 #12 - 12',
         phone: '3123445887',
+        active: true,
       },
       {
         id: 3,
         name: 'Simpsons Resort',
         address: '742 de Evergreen Terrace',
         phone: '3009085672',
+        active: false,
       },
       {
         id: 4,
         name: 'Hotel Simpsons',
         address: 'Avenida Siempreviva 742',
         phone: '3009085672',
+        active: true,
       },
       {
         id: 5,
         name: 'Bikini Bottom',
         address: 'Calle concha 124',
         phone: '3215554443',
+        active: false,
       },
       {
         id: 6,
         name: 'Griffin Resort',
         address: '31 Spooner Street',
         phone: '3214478936',
+        active: true,
       },
     ],
   },
@@ -73,6 +79,7 @@ export const MOCK_GET_HOTEL_SUCCESS: IMock<IHotelDetails> = {
     name: 'Hotel Simpsons',
     address: 'Avenida Siempreviva 742',
     phone: '3009085672',
+    active: true,
     rooms: [
       {
         id: 1,
@@ -104,4 +111,10 @@ export const MOCK_GET_HOTEL_SUCCESS: IMock<IHotelDetails> = {
     ],
   },
   method: 'GET',
+};
+
+export const MOCK_PUT_HOTEL_ACTIVE_SUCCESS: IMock<null> = {
+  url: URLS_API.HOTEL_ACTIVE,
+  response: null,
+  method: 'PUT',
 };
