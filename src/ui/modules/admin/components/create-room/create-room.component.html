@@ -1,1 +1,85 @@
-<p>create-room works!</p>
+@if (isLoadingCreateRoom() === LOADER_STATUS.INITIAL) {
+<h2 mat-dialog-title>Crear Hotel</h2>
+<mat-dialog-content [formGroup]="form">
+  <p>Ingrese la información del hotel</p>
+
+  <mat-form-field>
+    <mat-label>Tipo</mat-label>
+    <mat-select formControlName="type">
+      @for (type of types | keyvalue; track type) {
+      <mat-option [value]="type.key">{{ type.value }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Tamaño</mat-label>
+    <mat-select formControlName="size">
+      @for (size of sizes | keyvalue; track size) {
+      <mat-option [value]="size.key">{{ size.value }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Huespedes</mat-label>
+    <input type="number" matInput formControlName="allowed_guests" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input
+      type="number"
+      matInput
+      formControlName="price"
+      (blur)="updateTotalPrice()"
+      (input)="updateTotalPrice()"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Impuesto</mat-label>
+    <input
+      type="number"
+      matInput
+      formControlName="tax"
+      (blur)="updateTotalPrice()"
+      (input)="updateTotalPrice()"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Precio total</mat-label>
+    <input matInput type="number" formControlName="total_price" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancelar</button>
+  <button
+    mat-button
+    cdkFocusInitial
+    [disabled]="form.invalid"
+    (click)="onCreateClick()"
+  >
+    Crear
+  </button>
+</mat-dialog-actions>
+} @else if (isLoadingCreateRoom() === LOADER_STATUS.LOADING) {
+<mat-spinner></mat-spinner>
+} @else if (isLoadingCreateRoom() === LOADER_STATUS.SUCCESS) {
+<h2 mat-dialog-title>Hotel creado</h2>
+<mat-dialog-actions>
+  <button mat-button cdkFocusInitial (click)="onCancelClick()">Ok</button>
+</mat-dialog-actions>
+} @else if (isLoadingCreateRoom() === LOADER_STATUS.ERROR) {
+<h2 mat-dialog-title>Error</h2>
+<mat-dialog-content>
+  <p>Ocurrio un error al crear el hotel</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="onCreateClick()">
+    Intentar de nuevo
+  </button>
+</mat-dialog-actions>
+}
