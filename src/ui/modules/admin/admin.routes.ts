@@ -1,9 +1,9 @@
 import { Route } from '@angular/router';
 import { APP_ROUTES } from 'src/domain/constants/routes.constant';
-import { HotelsComponent } from './components/hotels/hotels.component';
 import { MenuComponent } from './layouts/menu/menu.component';
-import { BookingsComponent } from './components/bookings/bookings.component';
-import { HotelComponent } from './components/hotel/hotel.component';
+import { BookingsComponent } from './features/bookings/bookings.component';
+import { ListHotelsComponent } from './features/hotels/pages/list-hotels/list-hotels.component';
+import { HotelComponent } from './features/hotels/pages/hotel/hotel.component';
 
 const ROUTES = APP_ROUTES.ADMIN.CHILDREN;
 
@@ -15,7 +15,7 @@ export const ADMIN_ROUTES: Route[] = [
       { path: '', redirectTo: ROUTES.HOTELS.PATH, pathMatch: 'full' },
       {
         path: ROUTES.HOTELS.PATH,
-        component: HotelsComponent,
+        component: ListHotelsComponent,
       },
       {
         path: ROUTES.HOTEL.PATH,

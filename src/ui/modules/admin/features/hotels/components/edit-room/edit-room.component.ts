@@ -28,7 +28,7 @@ import {
   EHOTEL_ROOM_TYPE,
 } from 'src/domain/enums/hotel.enum';
 import { LoaderStatus } from 'src/domain/interfaces/app.interface';
-import { IHotelDetails, IRoom } from 'src/domain/interfaces/hotel.interface';
+import { IRoom } from 'src/domain/interfaces/hotel.interface';
 
 @Component({
   selector: 'app-edit-room',
@@ -52,7 +52,7 @@ import { IHotelDetails, IRoom } from 'src/domain/interfaces/hotel.interface';
 })
 export class EditRoomComponent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<EditRoomComponent>);
-  readonly room = inject<IRoom>(MAT_DIALOG_DATA);
+  readonly room = inject<Omit<IRoom, 'active'>>(MAT_DIALOG_DATA);
   private _formBuilder = inject(FormBuilder);
   private _adminFacade = inject(AdminFacade);
   public form!: FormGroup;
@@ -75,8 +75,16 @@ export class EditRoomComponent implements OnInit {
       tax: ['', Validators.required],
       total_price: [{ value: '', disabled: true }, Validators.required],
     });
-    const { price, tax } = this.room;
-    this.form.setValue({ ...this.room, total_price: price + tax });
+    const { id, type, size, allowed_guests, price, tax } = this.room;
+    this.form.setValue({
+      id,
+      type,
+      size,
+      allowed_guests,
+      price,
+      tax,
+      total_price: price + tax,
+    });
   }
 
   public updateTotalPrice(): void {

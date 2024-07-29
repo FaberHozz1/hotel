@@ -4,10 +4,10 @@ import { ListComponent } from 'src/ui/shared/layouts/list/list.component';
 import { MatTableModule } from '@angular/material/table';
 import { AdminFacade } from 'src/data/facades/admin.facade.';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateHotelComponent } from '../create-hotel/create-hotel.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CreateHotelComponent } from '../../components/create-hotel/create-hotel.component';
 
 @Component({
   selector: 'app-hotels',
@@ -20,10 +20,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatButtonModule,
     MatSlideToggleModule,
   ],
-  templateUrl: './hotels.component.html',
-  styleUrl: './hotels.component.sass',
+  templateUrl: './list-hotels.component.html',
+  styleUrl: './list-hotels.component.sass',
 })
-export class HotelsComponent {
+export class ListHotelsComponent {
   private _adminFacade = inject(AdminFacade);
   readonly displayedColumns: string[] = [
     'id',

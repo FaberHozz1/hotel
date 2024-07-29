@@ -9,15 +9,15 @@ import {
   IRoom,
 } from 'src/domain/interfaces/hotel.interface';
 import { CardComponent } from 'src/ui/shared/components/card/card.component';
-import { CreateRoomComponent } from '../create-room/create-room.component';
 import { CurrencyPipe } from '@angular/common';
-import { EditHotelComponent } from '../edit-hotel/edit-hotel.component';
-import { EditRoomComponent } from '../edit-room/edit-room.component';
 import { ListComponent } from 'src/ui/shared/layouts/list/list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
+import { EditHotelComponent } from '../../components/edit-hotel/edit-hotel.component';
+import { CreateRoomComponent } from '../../components/create-room/create-room.component';
+import { EditRoomComponent } from '../../components/edit-room/edit-room.component';
 
 @Component({
   selector: 'app-hotel',
