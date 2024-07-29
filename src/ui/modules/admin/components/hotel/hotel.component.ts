@@ -3,7 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AdminFacade } from 'src/data/facades/admin.facade.';
-import { IHotelDetails } from 'src/domain/interfaces/hotel.interface';
+import { IHotelDetails, IRoom } from 'src/domain/interfaces/hotel.interface';
 import { CreateRoomComponent } from '../create-room/create-room.component';
 import { CardComponent } from 'src/ui/shared/components/card/card.component';
 import { ListComponent } from 'src/ui/shared/layouts/list/list.component';
@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CurrencyPipe } from '@angular/common';
+import { EditRoomComponent } from '../edit-room/edit-room.component';
 
 @Component({
   selector: 'app-hotel',
@@ -47,11 +48,13 @@ export class HotelComponent {
     this.hotelDetails = toSignal(this._adminFacade.requestHotelDetails(id));
   }
 
-  public openDialog(): void {
+  public onCreateClick(): void {
     this.dialog.open(CreateRoomComponent);
   }
 
-  public onEditClick(id: string): void {
-    console.log('---> openmodal: ', id);
+  public onEditClick(room: IRoom): void {
+    this.dialog.open(EditRoomComponent, {
+      data: room,
+    });
   }
 }

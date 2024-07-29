@@ -60,6 +60,12 @@ export const MOCK_POST_HOTEL_SUCCESS: IMock<null> = {
   method: 'POST',
 };
 
+export const MOCK_PUT_HOTEL_SUCCESS: IMock<null> = {
+  url: URLS_API.HOTEL,
+  response: null,
+  method: 'PUT',
+};
+
 export const MOCK_GET_HOTEL_SUCCESS: IMock<IHotelDetails> = {
   url: URLS_API.HOTEL,
   response: {

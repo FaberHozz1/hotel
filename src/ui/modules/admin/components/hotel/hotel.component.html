@@ -7,7 +7,9 @@
   </div>
 
   <div class="options">
-    <button mat-raised-button (click)="openDialog()">Agregar habitación</button>
+    <button mat-raised-button (click)="onCreateClick()">
+      Agregar habitación
+    </button>
   </div>
 
   <table
@@ -46,7 +48,7 @@
     </ng-container>
 
     <ng-container matColumnDef="total_price">
-      <th mat-header-cell *matHeaderCellDef>COSTO TOTAL</th>
+      <th mat-header-cell *matHeaderCellDef>PRECIO TOTAL</th>
       <td mat-cell *matCellDef="let element">
         {{ element.price + element.tax | currency }}
       </td>
@@ -55,7 +57,7 @@
     <ng-container matColumnDef="button">
       <th mat-header-cell *matHeaderCellDef>EDITAR</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button (click)="onEditClick(element.id)">
+        <button mat-button (click)="onEditClick(element)">
           <mat-icon>edit</mat-icon>
           Editar
         </button>

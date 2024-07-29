@@ -28,6 +28,10 @@ export class AdminFacade {
     return this._hotelApi.createHotel(hotel);
   }
 
+  public updateHotel(hotel: IHotel): Observable<null> {
+    return this._hotelApi.updateHotel(hotel);
+  }
+
   public requestHotelDetails(id: string): Observable<IHotelDetails> {
     return this._hotelApi.requestHotelDetailsById(id);
   }

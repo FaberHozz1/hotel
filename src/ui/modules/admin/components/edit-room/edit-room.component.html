@@ -1,13 +1,15 @@
 @if (isLoadingCreateRoom() === LOADER_STATUS.INITIAL) {
-<h2 mat-dialog-title>Crear Habitación</h2>
+<h2 mat-dialog-title>Editar Habitación</h2>
 <mat-dialog-content [formGroup]="form">
-  <p>Ingrese la información de la habitación</p>
+  <p>
+    Edite la información de la habitación <b>{{ room.id }}</b>
+  </p>
 
   <mat-form-field>
     <mat-label>Tipo</mat-label>
     <mat-select formControlName="type">
       @for (type of types | keyvalue; track type) {
-      <mat-option [value]="type.key">{{ type.value }}</mat-option>
+      <mat-option [value]="type.value">{{ type.value }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
@@ -16,7 +18,7 @@
     <mat-label>Tamaño</mat-label>
     <mat-select formControlName="size">
       @for (size of sizes | keyvalue; track size) {
-      <mat-option [value]="size.key">{{ size.value }}</mat-option>
+      <mat-option [value]="size.value">{{ size.value }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
@@ -59,26 +61,26 @@
     mat-button
     cdkFocusInitial
     [disabled]="form.invalid"
-    (click)="onCreateClick()"
+    (click)="onUpdateClick()"
   >
-    Crear
+    Actualizar
   </button>
 </mat-dialog-actions>
 } @else if (isLoadingCreateRoom() === LOADER_STATUS.LOADING) {
 <mat-spinner></mat-spinner>
 } @else if (isLoadingCreateRoom() === LOADER_STATUS.SUCCESS) {
-<h2 mat-dialog-title>Habitación creada</h2>
+<h2 mat-dialog-title>Habitación actualizada</h2>
 <mat-dialog-actions>
   <button mat-button cdkFocusInitial (click)="onCancelClick()">Ok</button>
 </mat-dialog-actions>
 } @else if (isLoadingCreateRoom() === LOADER_STATUS.ERROR) {
 <h2 mat-dialog-title>Error</h2>
 <mat-dialog-content>
-  <p>Ocurrio un error al crear la habitación</p>
+  <p>Ocurrio un error al actualizar la habitación</p>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onCancelClick()">Cancelar</button>
-  <button mat-button cdkFocusInitial (click)="onCreateClick()">
+  <button mat-button cdkFocusInitial (click)="onUpdateClick()">
     Intentar de nuevo
   </button>
 </mat-dialog-actions>

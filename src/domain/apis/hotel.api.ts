@@ -22,6 +22,10 @@ export class HotelApi {
     return this._http.post<null>(URLS_API.HOTEL, hotel);
   }
 
+  public updateHotel(hotel: IHotel): Observable<null> {
+    return this._http.put<null>(URLS_API.HOTEL, hotel);
+  }
+
   public requestHotelDetailsById(id: string): Observable<IHotelDetails> {
     let params = new HttpParams();
     params = params.appendAll({ id });
