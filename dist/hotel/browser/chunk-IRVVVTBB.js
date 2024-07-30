@@ -1,0 +1,2 @@
+import{a as i}from"./chunk-TGZG4BG4.js";import{Vb as o,Zb as s,fa as n,xb as r,yb as a}from"./chunk-SIKNO6IY.js";var p=(()=>{class e{static \u0275fac=function(t){return new(t||e)};static \u0275cmp=n({type:e,selectors:[["app-reservations"]],standalone:!0,features:[s],decls:3,vars:0,template:function(t,d){t&1&&(o(0,`olamsdlashdahsd
+`),r(1,"p"),o(2,"reservations works!"),a())}})}return e})();var m=i.CUSTOMER.CHILDREN,u=[{path:"",redirectTo:m.RESERVE.PATH,pathMatch:"full"},{path:m.RESERVE.PATH,component:p}];export{u as CUSTOMER_ROUTES};
