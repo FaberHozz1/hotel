@@ -4,11 +4,11 @@ export const ADMIN_MENU = [
   {
     name: 'Hoteles',
     icon: 'hotel',
-    url: APP_ROUTES.ADMIN.CHILDREN.HOTELS.URL,
+    url: APP_ROUTES.ADMIN.CHILDREN.LIST_HOTELS.URL,
   },
   {
     name: 'Reservas',
     icon: 'room_service',
-    url: APP_ROUTES.ADMIN.CHILDREN.BOOKINGS.URL,
+    url: APP_ROUTES.ADMIN.CHILDREN.LIST_BOOKINGS.URL,
   },
 ];

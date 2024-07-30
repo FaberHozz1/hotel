@@ -11,6 +11,7 @@ import {
   MOCK_PUT_HOTEL_ROOM_ACTIVE_SUCCESS,
   MOCK_PUT_HOTEL_ROOM_SUCCESS,
 } from './room.mock';
+import { MOCK_GET_BOOKINGS_SUCCESS } from './bookings.mock';
 
 export const APP_MOCKS: Array<IMock<unknown>> = [
   MOCK_GET_HOTELS_SUCCESS,
@@ -21,4 +22,5 @@ export const APP_MOCKS: Array<IMock<unknown>> = [
   MOCK_POST_HOTEL_ROOM_SUCCESS,
   MOCK_PUT_HOTEL_ROOM_SUCCESS,
   MOCK_PUT_HOTEL_ROOM_ACTIVE_SUCCESS,
+  MOCK_GET_BOOKINGS_SUCCESS,
 ];

@@ -4,4 +4,5 @@ export const URLS_API = {
   HOTEL_ACTIVE: 'hotel/active',
   ROOM: 'hotel/room',
   ROOM_ACTIVE: 'hotel/room/active',
+  BOOKINGS: 'bookings',
 };

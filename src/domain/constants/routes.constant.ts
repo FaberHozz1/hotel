@@ -3,17 +3,21 @@ export const APP_ROUTES = {
     PATH: 'admin',
     URL: 'admin',
     CHILDREN: {
-      HOTELS: {
-        PATH: 'hotels',
-        URL: 'admin/hotels',
+      LIST_HOTELS: {
+        PATH: 'list-hotels',
+        URL: 'admin/list-hotels',
       },
       HOTEL: {
         PATH: 'hotel/:id',
         URL: 'admin/hotel/',
       },
-      BOOKINGS: {
-        PATH: 'bookings',
-        URL: 'admin/bookings',
+      LIST_BOOKINGS: {
+        PATH: 'list-bookings',
+        URL: 'admin/list-bookings',
+      },
+      BOOKING_DETAIL: {
+        PATH: 'booking-detail',
+        URL: 'admin/booking-detail',
       },
     },
   },

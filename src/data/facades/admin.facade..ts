@@ -1,7 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { BookingApi } from 'src/domain/apis/booking.api';
 import { HotelApi } from 'src/domain/apis/hotel.api';
 import { APP_ROUTES } from 'src/domain/constants/routes.constant';
+import {
+  IBooking,
+  IBookingList,
+} from 'src/domain/interfaces/booking.interface';
 import {
   IHotel,
   IHotelDetails,
@@ -14,6 +19,7 @@ import { AppService } from 'src/domain/services/app.service';
 export class AdminFacade {
   public _appService = inject(AppService);
   public _hotelApi = inject(HotelApi);
+  public _bookingApi = inject(BookingApi);
 
   public onChangeMenuItem(url: string): void {
     this._appService.goTo(url);
@@ -60,5 +66,11 @@ export class AdminFacade {
     this._hotelApi
       .updateHotelActive(id)
       .subscribe(() => this._appService.showActiveConfirm());
+  }
+
+  public requestBookingsList(): Observable<IBooking[]> {
+    return this._bookingApi
+      .requestBookings()
+      .pipe(map(({ bookings }: IBookingList) => bookings));
   }
 }
