@@ -7,10 +7,21 @@ export interface IBookingList {
 
 export interface IBooking {
   id: number;
-  hotel: IHotel;
-  guest: IGuest;
   date_in: Date;
   date_out: Date;
+  hotel_id: number;
+  hotel_name: string;
+  hotel_address: string;
+  hotel_phone: string;
+  hotel_active: boolean;
+  guest_id: number;
+  guest_name: string;
+  guest_birthdate: Date;
+  guest_gender: EGENDER;
+  guest_document_type: EDOCUMENT_TYPE;
+  guest_document_number: string;
+  guest_email: string;
+  guest_phone: string;
 }
 
 export interface IGuest {
