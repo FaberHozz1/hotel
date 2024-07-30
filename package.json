@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --configuration=prod ---href=/hotel/",
+    "deploy:prod": "ng deploy --repo=https://github.com/faberhozz1/hotel.git --name='faberhozz1' --base-href=https://faberhozz1.github.io/hotel/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

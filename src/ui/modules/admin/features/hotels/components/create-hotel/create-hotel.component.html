@@ -1,6 +1,6 @@
 @if (isLoadingCreateHotel() === LOADER_STATUS.INITIAL) {
 <h2 mat-dialog-title>Crear Hotel</h2>
-<mat-dialog-content [formGroup]="form">
+<mat-dialog-content class="dialog-content" [formGroup]="form">
   <p>Ingrese la información del hotel</p>
   <mat-form-field>
     <mat-label>Nombre</mat-label>
@@ -35,7 +35,7 @@
 </mat-dialog-actions>
 } @else if (isLoadingCreateHotel() === LOADER_STATUS.ERROR) {
 <h2 mat-dialog-title>Error</h2>
-<mat-dialog-content>
+<mat-dialog-content class="dialog-content">
   <p>Ocurrio un error al crear el hotel</p>
 </mat-dialog-content>
 <mat-dialog-actions>

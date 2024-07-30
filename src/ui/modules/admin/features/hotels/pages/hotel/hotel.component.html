@@ -1,19 +1,20 @@
 <!-- TODO: Make if else to empty hotelDetails() -->
 <section>
-  <div>
-    <h2>{{ hotelDetails()?.name }}</h2>
-    <p>{{ hotelDetails()?.address }}</p>
-    <p>{{ hotelDetails()?.phone }}</p>
-  </div>
-
   <div class="options">
-    <button mat-raised-button (click)="onEditHotelClick()">
-      <mat-icon>edit</mat-icon>
-      Editar
-    </button>
-    <button mat-raised-button (click)="onCreateRoomClick()">
-      Agregar habitación
-    </button>
+    <div>
+      <h3>{{ hotelDetails()?.name }}</h3>
+      <p>Dirección:{{ hotelDetails()?.address }}</p>
+      <p>Telefono: {{ hotelDetails()?.phone }}</p>
+    </div>
+    <div class="gap">
+      <button mat-raised-button (click)="onEditHotelClick()">
+        <mat-icon>edit</mat-icon>
+        Editar
+      </button>
+      <button mat-raised-button (click)="onCreateRoomClick()">
+        Agregar habitación
+      </button>
+    </div>
   </div>
 
   <table

@@ -1,8 +1,9 @@
 <section>
   <div class="options">
+    <h3>Lista de hoteles</h3>
     <button mat-raised-button (click)="openDialog()">Create Hotel</button>
   </div>
-
+  <mat-divider></mat-divider>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>

@@ -4,11 +4,12 @@ import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterOutlet } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [MatMenuModule, RouterOutlet, MatIconModule],
+  imports: [MatMenuModule, RouterOutlet, MatIconModule, MatButtonModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.sass',
 })

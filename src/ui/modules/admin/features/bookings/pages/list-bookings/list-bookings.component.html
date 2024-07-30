@@ -1,198 +1,153 @@
-<!-- <section>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
+<section>
+  <div class="options">
+    <h3>Lista de reservas</h3>
+  </div>
 
-    <ng-container matColumnDef="hotel_name">
-      <th mat-header-cell *matHeaderCellDef>HOTEL</th>
-      <td mat-cell *matCellDef="let element">{{ element.hotel.name }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="guest_name">
-      <th mat-header-cell *matHeaderCellDef>HUESPED</th>
-      <td mat-cell *matCellDef="let element">{{ element.guest.name }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="guest_email">
-      <th mat-header-cell *matHeaderCellDef>EMAIL</th>
-      <td mat-cell *matCellDef="let element">{{ element.guest.email }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="date_in">
-      <th mat-header-cell *matHeaderCellDef>FECHA INGRESO</th>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    multiTemplateDataRows
+    class="mat-elevation-z8"
+  >
+    @for (column of displayedColumns | keyvalue; track column) {
+    <ng-container matColumnDef="{{ column.key }}">
+      <th mat-header-cell *matHeaderCellDef>{{ column.value }}</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.date_in | date : "dd/MM/yyyy" }}
+        {{
+          column.key.includes("date_")
+            ? (element[column.key] | date : "dd/MM/yyyy")
+            : element[column.key]
+        }}
       </td>
     </ng-container>
-
-    <ng-container matColumnDef="date_out">
-      <th mat-header-cell *matHeaderCellDef>FECHA SALIDA</th>
+    }
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.date_out | date : "dd/MM/yyyy" }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="button">
-      <th mat-header-cell *matHeaderCellDef>DETALLES</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-button (click)="onDetailsClick(element.id)">
-          <mat-icon>visibility</mat-icon>
-          Ver más
+        <button
+          mat-icon-button
+          aria-label="expand row"
+          (click)="
+            expandedElement = expandedElement === element ? null : element;
+            $event.stopPropagation()
+          "
+        >
+          @if (expandedElement === element) {
+          <mat-icon>keyboard_arrow_up</mat-icon>
+          } @else {
+          <mat-icon>keyboard_arrow_down</mat-icon>
+          }
         </button>
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="7">
+        <div
+          class="element-detail"
+          [@detailExpand]="
+            element == expandedElement ? 'expanded' : 'collapsed'
+          "
+        >
+          <div>
+            <h3>Reserva:</h3>
+            <mat-list>
+              <mat-list-item>
+                <span matListItemTitle>Id:</span>
+                <span matListItemLine>{{ element.id }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Fecha ingreso</span>
+                <span matListItemLine>{{
+                  element.date_in | date : "dd/MM/yyyy"
+                }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Fecha salida</span>
+                <span matListItemLine>{{
+                  element.date_out | date : "dd/MM/yyyy"
+                }}</span>
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+          <div>
+            <h3>Hotel:</h3>
+            <mat-list>
+              <mat-list-item>
+                <span matListItemTitle>Id:</span>
+                <span matListItemLine>{{ element.hotel_id }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Nombre:</span>
+                <span matListItemLine>{{ element.hotel_name }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Dirección:</span>
+                <span matListItemLine>{{ element.hotel_address }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Teléfono:</span>
+                <span matListItemLine>{{ element.hotel_phone }}</span>
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+          <div>
+            <h3>Huesped:</h3>
+            <mat-list>
+              <mat-list-item>
+                <span matListItemTitle>Id:</span>
+                <span matListItemLine>{{ element.guest_id }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Nombre:</span>
+                <span matListItemLine>{{ element.guest_name }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Fecha Nacimiento:</span>
+                <span matListItemLine>{{
+                  element.guest_birthdate | date : "dd/MM/yyyy"
+                }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Genero:</span>
+                <span matListItemLine>{{ element.guest_gender }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Tipo de documento:</span>
+                <span matListItemLine>{{ element.guest_document_type }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Número de documento:</span>
+                <span matListItemLine>{{ element.guest_document_number }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Correo:</span>
+                <span matListItemLine>{{ element.guest_email }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Teléfono:</span>
+                <span matListItemLine>{{ element.guest_phone }}</span>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+    <tr
+      mat-row
+      *matRowDef="let element; columns: columnsToDisplayWithExpand"
+      class="element-row"
+      [class.expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['expandedDetail']"
+      class="detail-row"
+    ></tr>
   </table>
 </section>
-
- -->
-
-<table
-  mat-table
-  [dataSource]="dataSource"
-  multiTemplateDataRows
-  class="mat-elevation-z8"
->
-  @for (column of displayedColumns | keyvalue; track column) {
-  <ng-container matColumnDef="{{ column.key }}">
-    <th mat-header-cell *matHeaderCellDef>{{ column.value }}</th>
-    <td mat-cell *matCellDef="let element">
-      {{
-        column.key.includes("date_")
-          ? (element[column.key] | date : "dd/MM/yyyy")
-          : element[column.key]
-      }}
-    </td>
-  </ng-container>
-  }
-  <ng-container matColumnDef="expand">
-    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
-    <td mat-cell *matCellDef="let element">
-      <button
-        mat-icon-button
-        aria-label="expand row"
-        (click)="
-          expandedElement = expandedElement === element ? null : element;
-          $event.stopPropagation()
-        "
-      >
-        @if (expandedElement === element) {
-        <mat-icon>keyboard_arrow_up</mat-icon>
-        } @else {
-        <mat-icon>keyboard_arrow_down</mat-icon>
-        }
-      </button>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let element" [attr.colspan]="7">
-      <div
-        class="element-detail"
-        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
-      >
-        <div>
-          <h3>Reserva:</h3>
-          <mat-list>
-            <mat-list-item>
-              <span matListItemTitle>Id:</span>
-              <span matListItemLine>{{ element.id }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Fecha ingreso</span>
-              <span matListItemLine>{{
-                element.date_in | date : "dd/MM/yyyy"
-              }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Fecha salida</span>
-              <span matListItemLine>{{
-                element.date_out | date : "dd/MM/yyyy"
-              }}</span>
-            </mat-list-item>
-          </mat-list>
-        </div>
-        <mat-divider [vertical]="true"></mat-divider>
-        <div>
-          <h3>Hotel:</h3>
-          <mat-list>
-            <mat-list-item>
-              <span matListItemTitle>Id:</span>
-              <span matListItemLine>{{ element.hotel_id }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Nombre:</span>
-              <span matListItemLine>{{ element.hotel_name }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Dirección:</span>
-              <span matListItemLine>{{ element.hotel_address }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Teléfono:</span>
-              <span matListItemLine>{{ element.hotel_phone }}</span>
-            </mat-list-item>
-          </mat-list>
-        </div>
-        <mat-divider [vertical]="true"></mat-divider>
-        <div>
-          <h3>Huesped:</h3>
-          <mat-list>
-            <mat-list-item>
-              <span matListItemTitle>Id:</span>
-              <span matListItemLine>{{ element.guest_id }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Nombre:</span>
-              <span matListItemLine>{{ element.guest_name }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Fecha Nacimiento:</span>
-              <span matListItemLine>{{
-                element.guest_birthdate | date : "dd/MM/yyyy"
-              }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Genero:</span>
-              <span matListItemLine>{{ element.guest_gender }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Tipo de documento:</span>
-              <span matListItemLine>{{ element.guest_document_type }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Número de documento:</span>
-              <span matListItemLine>{{ element.guest_document_number }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Correo:</span>
-              <span matListItemLine>{{ element.guest_email }}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span matListItemTitle>Teléfono:</span>
-              <span matListItemLine>{{ element.guest_phone }}</span>
-            </mat-list-item>
-          </mat-list>
-        </div>
-      </div>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
-  <tr
-    mat-row
-    *matRowDef="let element; columns: columnsToDisplayWithExpand"
-    class="element-row"
-    [class.expanded-row]="expandedElement === element"
-    (click)="expandedElement = expandedElement === element ? null : element"
-  ></tr>
-  <tr
-    mat-row
-    *matRowDef="let row; columns: ['expandedDetail']"
-    class="detail-row"
-  ></tr>
-</table>

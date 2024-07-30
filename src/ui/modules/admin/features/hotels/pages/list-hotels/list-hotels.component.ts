@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CreateHotelComponent } from '../../components/create-hotel/create-hotel.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-hotels',
@@ -15,10 +16,11 @@ import { CreateHotelComponent } from '../../components/create-hotel/create-hotel
   imports: [
     CardComponent,
     ListComponent,
-    MatTableModule,
-    MatIconModule,
     MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
     MatSlideToggleModule,
+    MatTableModule,
   ],
   templateUrl: './list-hotels.component.html',
   styleUrl: './list-hotels.component.sass',

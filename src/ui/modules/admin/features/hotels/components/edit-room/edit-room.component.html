@@ -1,6 +1,6 @@
 @if (isLoadingCreateRoom() === LOADER_STATUS.INITIAL) {
 <h2 mat-dialog-title>Editar Habitación</h2>
-<mat-dialog-content [formGroup]="form">
+<mat-dialog-content class="dialog-content" [formGroup]="form">
   <p>
     Edite la información de la habitación <b>{{ room.id }}</b>
   </p>
@@ -75,7 +75,7 @@
 </mat-dialog-actions>
 } @else if (isLoadingCreateRoom() === LOADER_STATUS.ERROR) {
 <h2 mat-dialog-title>Error</h2>
-<mat-dialog-content>
+<mat-dialog-content class="dialog-content">
   <p>Ocurrio un error al actualizar la habitación</p>
 </mat-dialog-content>
 <mat-dialog-actions>
